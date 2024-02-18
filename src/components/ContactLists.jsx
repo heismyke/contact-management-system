@@ -9,7 +9,7 @@ import { useContext } from 'react'
 const ContactLists = () => {
     const {data} = useContext(ContactContext)
     return (
-        <div className='w-[100%] md:w-[25%] lg:w-[25%] h-[100vh] bg-gray-100 mx-auto '>
+        <div className='w-[100%] md:w-[25%] lg:w-[100%] h-[100vh] bg-gray-100 mx-auto '>
             <div className='w-[100%] h-[50px] flex'>
                 <div className='w-[20%] h-[50px] flex items-center justify-center'>
                     <Link to='/'>

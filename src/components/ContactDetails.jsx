@@ -12,13 +12,13 @@ const ContactDetails = () => {
 
     const contact = data.find(dat => dat.id === id)
     console.log(contact)
-    
+
     if (!contact) {
         return <div>Contact not found</div>; 
     }
 
     return (
-        <div className='w-[100%] md:w-[25%] lg:w-[25%] h-[100vh] bg-gray-100 mx-auto '>
+        <div className='w-[100%] md:w-[25%] lg:w-[100%] h-[100vh] bg-gray-100 mx-auto '>
             <div className='w-[100%] h-[200px] bg-slate-500'>
                 <div className='w-[100%] h-[50px]  flex items-center justify-between px-3'>
                     <div className='rounded-full h-[30px] w-[30px] flex items-center justify-center bg-slate-700'>

@@ -8,7 +8,7 @@ const Contacts = () => {
   const {data} = useContext(ContactContext)
   
   return (
-    <div className='w-[100%] md:w-[25%] lg:w-[100%] h-[100vh] bg-gray-100 mx-auto '>
+    <div className='w-[100%] md:w-[25%]  h-[100vh] bg-gray-100 mx-auto '>
       <div className='w-[100%] h-[50px] flex items-center justify-start pl-2'>
       <h1 className='text-4xl text-bold'>Lists</h1>
       </div>

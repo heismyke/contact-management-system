@@ -29,8 +29,14 @@ export const ContactProvider = ({children}) => {
         newContact.id = uuidv4()
         setData([...data, newContact])
     }
+
+    const deleteContact = (id) => {
+        if(window.confirm('Are you sure you want to delete')){
+            setData(data.filter((element) => element.id !== id))
+        }
+    }
     
-    return <ContactContext.Provider value={{data, dataEdit,addContact,updateContact, updatedContact}}>
+    return <ContactContext.Provider value={{data, dataEdit,addContact,updateContact, updatedContact, deleteContact}}>
         {children}
     </ContactContext.Provider>
 }

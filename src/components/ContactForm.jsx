@@ -101,7 +101,7 @@ const ContactForm = () => {
    }
     
   return (
-   <div className='w-[100%] md:w-[25%] lg:w-[100%] h-[100vh] bg-gray-100 mx-auto'>
+   <div className='w-[100%] md:w-[25%]  h-[100vh] bg-gray-100 mx-auto'>
      <div className='w-[100%] h-[50px] flex'>
                 <div className='w-[20%] h-[50px] flex items-center justify-center'>
                     <Link to='/contacts'>
@@ -161,6 +161,9 @@ const ContactForm = () => {
                 className='w-full h-full border-b pl-2 focus:outline-none'/>
                 </div>
              </form>
+             <div className='w-[100%] h-[50px]  flex items-center justify-center'>
+               
+             </div>
    </div>
   )
 }

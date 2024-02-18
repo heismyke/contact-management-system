@@ -1,5 +1,5 @@
-import { createContext, useState } from "react";
-import { v4 as uuidv4 } from 'uuid'; 
+import { createContext, useState, useEffect } from "react";
+
 const ContactContext = createContext()
 
 export const ContactProvider = ({children}) => {
@@ -12,26 +12,55 @@ export const ContactProvider = ({children}) => {
         item : {},
         edit : false
     })
-    const updatedContact = (id, item) => {
-        setData(data.map((element) => element.id === id ? {...element, ...item} : element)) 
+    const updatedContact = async(id, item) => {
+        const response = await fetch(`/contacts/${id}`, {
+            method : 'PUT',
+            headers : {
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify(item)
+        })
+        const dataUpdate = await response.json()
+
+        setData(data.map((element) => element.id === id ? {...element, ...dataUpdate} : element)) 
     }
     const updateContact = (item) => {
+        
         setDataEdit({
             item,
             edit: true
         })
         
     }
-    console.log(updateContact)
-    console.log(dataEdit)
+   
 
-    const addContact = (newContact) => {
-        newContact.id = uuidv4()
-        setData([...data, newContact])
+    useEffect(() => {
+        fetchContact()
+    },[])
+
+    const fetchContact = async  () => {
+        const response = await fetch(`/contacts/`)
+        const data = await response.json()
+        setData(data)
+    }
+    const addContact = async (newContact) => {
+        const response = await fetch(`/contacts/`, {
+            method : 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newContact)
+        })
+        const dataContact = await response.json()
+        setData([...data, dataContact])
     }
 
-    const deleteContact = (id) => {
+    const deleteContact = async(id) => {
         if(window.confirm('Are you sure you want to delete')){
+            await fetch(`/contacts/${id}`,{
+                method : "DELETE"
+            })
+            console.log(id)
             setData(data.filter((element) => element.id !== id))
         }
     }

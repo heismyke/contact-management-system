@@ -9,9 +9,10 @@ import Button from '../shared/Button';
 const ContactDetails = () => {
     const { id } = useParams(); 
     const { data , updateContact, deleteContact} = useContext(ContactContext); 
+    console.log(id)
+    console.log(data)
     
-
-    const contact = data.find(dat => dat.id === id)
+    const contact = data.find(dat => dat.id === parseInt(id))
     console.log(contact)
 
     if (!contact) {
